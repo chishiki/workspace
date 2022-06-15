@@ -1,0 +1,29 @@
+{
+  "name": "chishiki/workspace",
+  "description": "Module for managing Coworking Office Spaces",
+  "version": "0.1.0",
+  "keywords": [
+    "php",
+    "module",
+    "perihelion",
+    "satellite"
+  ],
+  "homepage": "https://github.com/chishiki/workspace/",
+  "time": "2022-06-15",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christopher Webb",
+      "email": "christopher@zenidev.com",
+      "homepage": "https://linkedin.com/in/chishiki",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@zenidev.com",
+    "issues": "https://github.com/chishiki/workspace/issues",
+    "wiki": "https://github.com/chishiki/workspace/wiki",
+    "source": "https://github.com/chishiki/workspace",
+    "docs": "https://github.com/chishiki/workspace/wiki"
+  }
+}
