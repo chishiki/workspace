@@ -62,6 +62,8 @@ final class WorkspaceAdminRoomController {
 					$room = new WorkspaceRoom($roomID);
 					$room->updated = date('Y-m-d H:i:s');
 					foreach ($input AS $property => $value) { if (isset($room->$property)) { $room->$property = $value; } }
+					if (!isset($input['roomPublished'])) { $room->roomPublished = 0; }
+					if (!isset($input['roomFeatured'])) { $room->roomFeatured = 0; }
 					$conditions = array('roomID' => $roomID);
 					WorkspaceRoom::update($room, $conditions, true, false, 'workspace_');
 					$this->messages[] = Lang::getLang('roomUpdateSuccessful');
