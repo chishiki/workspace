@@ -38,6 +38,7 @@ final class WorkspaceRoom extends ORM {
 	public $roomPublished;
 	public $roomFeatured;
 	public $roomURL;
+	public $roomBookingURL;
 
 	public function __construct($roomID = null) {
 
@@ -57,6 +58,7 @@ final class WorkspaceRoom extends ORM {
 		$this->roomPublished = 0;
 		$this->roomFeatured = 0;
 		$this->roomURL = '';
+		$this->roomBookingURL = '';
 
 		if ($roomID) {
 

@@ -14,7 +14,9 @@ CREATE TABLE `workspace_WorkspaceRoom` (
     `roomNameJapanese` varchar(255) NOT NULL,
     `roomDescriptionJapanese` text NOT NULL,
     `roomPublished` int(1) NOT NULL,
+    `roomFeatured` int(1) NOT NULL,
     `roomURL` varchar(100) NOT NULL,
+    `roomBookingURL` varchar(255) NOT NULL,
     PRIMARY KEY (`roomID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
