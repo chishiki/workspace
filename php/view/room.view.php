@@ -64,6 +64,7 @@ final class WorkspaceRoomView {
 
 	public function adminRoomForm($type, $roomID = null) {
 
+		$site = new Site($_SESSION['siteID']);
 		$room = new WorkspaceRoom($roomID);
 		$pcv = new WorkspaceRoomCategoryView();
 		if (!empty($this->input)) {
@@ -133,6 +134,41 @@ final class WorkspaceRoomView {
 				
 					</div>
 				
+				</div>
+				
+				<hr />
+				
+				<div class="form-row">
+					<div class="form-group col-12">
+						<div class="form-check">
+							<input type="checkbox" id="checkbox_room_published" name="roomPublished" class="form-check-input" value="1"' . ($room->roomPublished?' checked':'') . '>
+							<label class="form-check-label" for="checkbox_room_published">Published</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-row">
+					<div class="form-group col-12">
+						<div class="form-check">
+							<input type="checkbox" id="checkbox_room_featured" name="roomFeatured" class="form-check-input" value="1"' . ($room->roomFeatured?' checked':'') . '>
+							<label class="form-check-label" for="checkbox_room_featured">Featured</label>
+						</div>
+					</div>
+				</div>
+				
+				<hr />
+				
+				<div class="form-row">
+				
+					<div class="form-group col-12 col-sm-8 col-md-6">
+						<label for="roomURL">' . Lang::getLang('roomURL') . ' (' . Lang::getLang('alphanumericHyphenOnly') . ')</label>
+						<div class="input-group">
+							<div class="input-group-prepend"><div class="input-group-text"><!--http://' . $site->siteURL . '/' . Lang::prefix() . 'workspace/news-->/</div></div>
+							<input type="text" class="form-control" name="roomURL" value="' . $room->roomURL . '" required>
+							<div class="input-group-append"><div class="input-group-text">/</div></div>
+						</div>
+					</div>
+
 				</div>
 				
 				<hr />
@@ -288,6 +324,17 @@ final class WorkspaceRoomView {
 
 		$room = new WorkspaceRoom($roomID);
 
+		$bookingButton = '';
+		if ($room->roomBookingURL) {
+			$bookingButton = '
+				<div class="row">
+					<div class="col-12">
+						<a class="btn btn-outline-primary btn-block" href="' . $room->roomBookingURL . '">' . lang('bookRoom') . '</a>
+					</div>
+				</div>
+			';
+		}
+
 		$view = '
 		
 			<div class="room-view container-fluid">
@@ -299,6 +346,7 @@ final class WorkspaceRoomView {
 					<div class="col-12 col-sm-6 mb-3">
 						<h1 class="workspace-h">' . $room->roomName() . '</h1>
 						<p>' . nl2br(htmlentities($room->roomDescription()),true) . '</p>
+						' . $bookingButton . '
 					</div>
 
 					<div class="col-12 mb-3">
