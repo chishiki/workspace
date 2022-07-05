@@ -101,7 +101,9 @@ REPLACE INTO perihelion_Lang VALUES
 ('blockTextEnglish', 'Text (English)', 0, '内容(英語)', 0, @now),
 ('blockTitleJapanese', 'Title (Japanese)', 0, 'タイトル(日本語)', 0, @now),
 ('blockLinkUrlJapanese', 'URL (Japanese)', 0, 'URL(日本語)', 0, @now),
-('blockTextJapanese', 'Text (Japanese)', 0, '内容(日本語)', 0, @now);
+('blockTextJapanese', 'Text (Japanese)', 0, '内容(日本語)', 0, @now),
+('workspaceBlockConfirmDelete', 'Confirm Block Delete', 0, 'ブロック削除確認', 0, @now),
+('breadcrumbConfirmDelete', 'Confirm Delete', 0, '削除確認', 0, @now);
 
 -- REPLACE INTO perihelion_Lang VALUES ('xxxxxxx', 'xxxxxxx', 0, 'xxxxxxx', 0, @now);
 

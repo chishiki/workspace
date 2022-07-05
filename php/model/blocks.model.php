@@ -81,6 +81,36 @@ final class Block extends ORM {
 
 	}
 
+	public function title() {
+
+		$url = $this->blockTitleEnglish;
+		if ($_SESSION['lang'] == 'ja' && !empty($this->blockTitleJapanese)) {
+			$url = $this->blockTitleJapanese;
+		}
+		return $url;
+
+	}
+
+	public function text() {
+
+		$url = $this->blockTextEnglish;
+		if ($_SESSION['lang'] == 'ja' && !empty($this->blockTextJapanese)) {
+			$url = $this->blockTextJapanese;
+		}
+		return $url;
+
+	}
+
+	public function url() {
+
+		$url = $this->blockLinkUrlEnglish;
+		if ($_SESSION['lang'] == 'ja' && !empty($this->blockLinkUrlJapanese)) {
+			$url = $this->blockLinkUrlJapanese;
+		}
+		return $url;
+
+	}
+
 	public function markAsDeleted() {
 
 		$dt = new DateTime();

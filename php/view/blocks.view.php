@@ -149,23 +149,40 @@ final class WorkspaceBlockView {
 
 			<div class="form-row">
 
-				<div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-					<label for="block_title">' . Lang::getLang('blockTitle') . '</label>
-					<input type="text" id="block_title" class="form-control" name="blockTitle" value="' . $block->blockTitle . '" disabled>
+				<div class="form-group col-12 col-lg-5 col-xl-4">
+					<label for="block_title_english">' . Lang::getLang('blockTitleEnglish') . '</label>
+					<input type="text" id="block_title_english" class="form-control" value="' . $block->blockTitleEnglish . '" readonly>
 				</div>
 
-				<div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-					<label for="block_link_url">' . Lang::getLang('blockLinkURL') . '</label>
-					<input type="text" id="block_link_url" class="form-control" name="blockLinkURL" value="' . $block->blockLinkURL . '" disabled>
+				<div class="form-group col-12 col-lg-7 col-xl-8">
+					<label for="block_link_url_english">' . Lang::getLang('blockLinkUrlEnglish') . '</label>
+					<input type="text" id="block_link_url_english" class="form-control" value="' . $block->blockLinkUrlEnglish . '" readonly>
+				</div>
+
+				<div class="form-group col-12">
+					<label for="block_text_english">' . Lang::getLang('blockTextEnglish') . '</label>
+					<textarea id="block_text_english" class="form-control" readonly>' . $block->blockTextEnglish . '</textarea>
 				</div>
 
 			</div>
-
+			
+			<hr />
+			
 			<div class="form-row">
 
+				<div class="form-group col-12 col-lg-5 col-xl-4">
+					<label for="block_title_japanese">' . Lang::getLang('blockTitleJapanese') . '</label>
+					<input type="text" id="block_title_japanese" class="form-control" value="' . $block->blockTitleJapanese . '" readonly>
+				</div>
+
+				<div class="form-group col-12 col-lg-7 col-xl-8">
+					<label for="block_link_url_japanese">' . Lang::getLang('blockLinkUrlJapanese') . '</label>
+					<input type="text" id="block_link_url_japanese" class="form-control" value="' . $block->blockLinkUrlJapanese . '" readonly>
+				</div>
+
 				<div class="form-group col-12">
-					<label for="block_text">' . Lang::getLang('blockText') . '</label>
-					<textarea id="block_text" class="form-control" name="blockText" disabled>' . $block->blockText . '</textarea>
+					<label for="block_text_japanese">' . Lang::getLang('blockTextJapanese') . '</label>
+					<textarea id="block_text_japanese" class="form-control" readonly>' . $block->blockTextJapanese . '</textarea>
 				</div>
 
 			</div>
@@ -224,8 +241,8 @@ final class WorkspaceBlockView {
 							<tr>
 								<th scope="col" class="text-center text-nowrap">' . Lang::getLang('blockID') . '</th>
 								<th scope="col" class="text-center text-nowrap">' . Lang::getLang('blockTitle') . '</th>
-								<th scope="col" class="text-center text-nowrap">' . Lang::getLang('blockText') . '</th>
-								<th scope="col" class="text-center text-nowrap">' . Lang::getLang('blockLinkURL') . '</th>
+								<!--<th scope="col" class="text-center text-nowrap">' . Lang::getLang('blockText') . '</th>-->
+								<!--<th scope="col" class="text-center text-nowrap">' . Lang::getLang('blockLinkURL') . '</th>-->
 								<th scope="col" class="text-center text-nowrap">' . Lang::getLang('action') . '</th>
 							</tr>
 						</thead>
@@ -256,13 +273,15 @@ final class WorkspaceBlockView {
 
 		foreach ($results AS $r) {
 
+			$b = new Block($r['blockID']);
+
 			$rows .= '
 
 				<tr id="workspace_block_key_' . $r['blockID'] . '" class="workspace-block-list-row" data-row-block-id="' . $r['blockID'] . '">
 					<th scope="row" class="text-center workspace-block-list-cell" data-cell-block-id="' . $r['blockID'] . '">' . $r['blockID'] . '</th>
-					<td class="text-center workspace-block-list-cell" data-cell-block-title="' . $r['blockTitle'] . '">' . $r['blockTitle'] . '</td>
-					<td class="text-center workspace-block-list-cell" data-cell-block-text="' . $r['blockText'] . '">' . $r['blockText'] . '</td>
-					<td class="text-center workspace-block-list-cell" data-cell-block-link-url="' . $r['blockLinkURL'] . '">' . $r['blockLinkURL'] . '</td>
+					<td class="text-center workspace-block-list-cell" data-cell-block-title="' . $b->title() . '">' . $b->title() . '</td>
+					<!--<td class="text-center workspace-block-list-cell" data-cell-block-text="' . $b->text() . '">' . $b->text() . '</td>-->
+					<!--<td class="text-center workspace-block-list-cell" data-cell-block-link-url="' . $b->url() . '">' . $b->url() . '</td>-->
 					<td class="text-center text-nowrap">
 						<a href="/' . Lang::prefix() . 'workspace/admin/blocks/update/' . $r['blockID'] . '/" class="btn btn-sm btn-outline-primary">
 							<span class="far fa-edit"></span>
