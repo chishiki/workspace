@@ -1,4 +1,24 @@
 
+DROP TABLE IF EXISTS `workspace_Block`;
+
+CREATE TABLE `workspace_Block` (
+    `blockID` int NOT NULL AUTO_INCREMENT,
+    `siteID` int NOT NULL,
+    `creator` int NOT NULL,
+    `created` datetime NOT NULL,
+    `updated` datetime DEFAULT NULL,
+    `deleted` int NOT NULL,
+    `blockTitleEnglish` varchar(100) NOT NULL,
+    `blockTextEnglish` text NOT NULL,
+    `blockLinkUrlEnglish` varchar(255) NOT NULL,
+    `blockTitleJapanese` varchar(100) NOT NULL,
+    `blockTextJapanese` text NOT NULL,
+    `blockLinkUrlJapanese` varchar(255) NOT NULL,
+    `blockPublished` int NOT NULL,
+    `blockDisplayOrder` int NOT NULL,
+    PRIMARY KEY (`blockID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 DROP TABLE IF EXISTS `workspace_WorkspaceRoom`;
 
 CREATE TABLE `workspace_WorkspaceRoom` (

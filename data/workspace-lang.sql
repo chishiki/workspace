@@ -81,7 +81,27 @@ REPLACE INTO perihelion_Lang VALUES
 ('workspaceRooms', 'Rooms', 0, '製品', 0, @now),
 ('workspaceRoomPublished', 'Published', 0, '公開', 0, @now),
 ('workspaceRoomFeatured', 'Featured', 0, '特徴', 0, @now),
-('bookRoom', 'Reserve', 0, '予約', 0, @now);
+('bookRoom', 'Reserve', 0, '予約', 0, @now),
+('workspaceBlockList', 'Block List', 0, 'ブロック一覧', 0, @now),
+('blockID', 'ID', 0, 'ID', 0, @now),
+('blockTitle', 'Title', 0, '題名', 0, @now),
+('blockText', 'Text', 0, '内容', 0, @now),
+('blockLinkURL', 'Link', 0, 'リンク', 0, @now),
+('breadcrumbIndex', 'Index', 0, 'インデックス', 0, @now),
+('breadcrumbWorkspace', 'Workspace', 0, 'ワークスペース', 0, @now),
+('breadcrumbAdmin', 'Admin', 0, '管理', 0, @now),
+('breadcrumbBlocks', 'Blocks', 0, 'ブロック', 0, @now),
+('blockLinkURL', 'URL', 0, 'URL', 0, @now),
+('breadcrumbCreate', 'Create', 0, '新規作成', 0, @now),
+('workspaceBlockCreate', 'Block Create', 0, 'ブロック新規作成', 0, @now),
+('breadcrumbUpdate', 'Update', 0, '更新', 0, @now),
+('workspaceBlockUpdate', 'Block Update', 0, 'ブロック更新', 0, @now),
+('blockTitleEnglish', 'Title (English)', 0, 'タイトル(英語)', 0, @now),
+('blockLinkUrlEnglish', 'URL (English)', 0, 'URL(英語)', 0, @now),
+('blockTextEnglish', 'Text (English)', 0, '内容(英語)', 0, @now),
+('blockTitleJapanese', 'Title (Japanese)', 0, 'タイトル(日本語)', 0, @now),
+('blockLinkUrlJapanese', 'URL (Japanese)', 0, 'URL(日本語)', 0, @now),
+('blockTextJapanese', 'Text (Japanese)', 0, '内容(日本語)', 0, @now);
 
 -- REPLACE INTO perihelion_Lang VALUES ('xxxxxxx', 'xxxxxxx', 0, 'xxxxxxx', 0, @now);
 

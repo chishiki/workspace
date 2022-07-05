@@ -32,6 +32,7 @@ final class WorkspaceController {
 					header("Location: $loginURL");
 				}
 
+				if ($loc[2] == 'blocks') { $controller = new WorkspaceAdminBlockStateController($loc,$input,$modules); }
 				if ($loc[2] == 'news') { $controller = new WorkspaceAdminNewsController($loc,$input,$modules); }
 				if ($loc[2] == 'rooms') { $controller = new WorkspaceAdminRoomController($loc,$input,$modules); }
 				if ($loc[2] == 'room-categories') { $controller = new WorkspaceAdminRoomCategoryController($loc,$input,$modules); }

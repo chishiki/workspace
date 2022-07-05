@@ -28,6 +28,7 @@ final class WorkspaceViewController {
 
 		if ($loc[0] == 'workspace') {
 			if ($loc[1] == 'admin') {
+				if ($loc[2] == 'blocks') { $v = new WorkspaceAdminBlockViewController($loc, $input, $modules, $errors, $messages); }
 				if ($loc[2] == 'news') { $v = new WorkspaceAdminNewsViewController($loc, $input, $modules, $errors, $messages); }
 				if ($loc[2] == 'rooms') { $v = new WorkspaceAdminRoomViewController($loc, $input, $modules, $errors, $messages); }
 				if ($loc[2] == 'room-categories') { $v = new WorkspaceAdminRoomCategoryViewController($loc, $input, $modules, $errors, $messages); }
