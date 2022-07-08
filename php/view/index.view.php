@@ -24,6 +24,10 @@ final class WorkspaceIndexView {
 		$arg->title = array('langKey' => 'workspaceFeaturedRooms', 'langSelector' => 'en');
 		$h .= $hpv->roomList($arg);
 
+		// GET BLOCKS
+		$wbv = new WorkspaceBlockView();
+		$h .= $wbv->workspaceBlockContainer();
+
 		// GET NEWS LIST
 		$hnw = new WorkspaceNewsView();
 		$h .= $hnw->newsList();

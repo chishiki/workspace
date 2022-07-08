@@ -302,6 +302,50 @@ final class WorkspaceBlockView {
 
 	}
 
+	public function workspaceBlockContainer() : string {
+
+		$arg = new WorkspaceBlockListParameters();
+		$blockList = new WorkspaceBlockList($arg);
+		$blocks = $blockList->results();
+
+		$h = '';
+
+		if (!empty($blocks)) {
+
+			$blockItems = '';
+
+			foreach ($blocks AS $block) {
+
+				$b = new Block($block['blockID']);
+
+				$blockItems .= '
+					<div class="col-12 col-sm-6 col-lg-3 mt-3">
+						<div class="card">
+							<img src="/image/27/600/" class="card-img-top">
+							<div class="card-body">
+								<h3 class="card-title">' . $b->title() . '</h3>
+								<p class="card-text">' . $b->text() . '</p>
+							</div>
+						</div>
+					</div>
+				';
+
+			}
+
+			$h = '
+				<div id="workspace_block_container" class="container-fluid">
+					<div class="row">
+						' . $blockItems . '
+					</div>
+				</div>
+			';
+
+		}
+
+		return $h;
+
+	}
+
 	public function workspaceBlockFilter($filterKey, $selectedFilter = null) {
 
 		$arg = new WorkspaceBlockListParameters();
