@@ -87,6 +87,16 @@ final class WorkspaceAdminBlockStateController {
 
 			}
 
+			// /workspace/admin/blocks/update/<blockID>/images/
+			if ($loc[3] == 'update' && is_numeric($loc[4]) && $loc[5] == 'images' && isset($input['submitted-images'])) {
+
+				$blockID = $loc[4];
+				// $this->errors (add validation here: ok to upload?)
+				// $this->errors[] = array('block-update' => Lang::getLang('thereWasAProblemAddingYourBlockImages'));
+				Image::uploadImages($_FILES['images-to-upload'], 'Block', $blockID, false);
+
+			}
+
 			// /workspace/admin/blocks/delete/<blockID>/
 			if ($loc[3] == 'delete' && is_numeric($loc[4]) && isset($input['workspace-block-delete'])) {
 

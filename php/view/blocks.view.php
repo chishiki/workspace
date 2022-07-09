@@ -52,7 +52,7 @@ final class WorkspaceBlockView {
 			foreach($this->input AS $key => $value) { if(isset($block->$key)) { $block->$key = $value; } }
 		}
 
-		$form = '
+		$form = $this->adminBlockFormTabs($type, $blockID) . '
 
 			<form id="block_' . $type . '_form" method="post" action="/' . Lang::prefix() . 'workspace/admin/blocks/' . $type . '/'  . ($blockID?$blockID.'/':'') . '">
 
@@ -279,7 +279,7 @@ final class WorkspaceBlockView {
 
 				<tr id="workspace_block_key_' . $r['blockID'] . '" class="workspace-block-list-row" data-row-block-id="' . $r['blockID'] . '">
 					<th scope="row" class="text-center workspace-block-list-cell" data-cell-block-id="' . $r['blockID'] . '">' . $r['blockID'] . '</th>
-					<td class="text-center workspace-block-list-cell" data-cell-block-title="' . $b->title() . '">' . $b->title() . '</td>
+					<td class="text-left workspace-block-list-cell" data-cell-block-title="' . $b->title() . '">' . $b->title() . '</td>
 					<!--<td class="text-center workspace-block-list-cell" data-cell-block-text="' . $b->text() . '">' . $b->text() . '</td>-->
 					<!--<td class="text-center workspace-block-list-cell" data-cell-block-link-url="' . $b->url() . '">' . $b->url() . '</td>-->
 					<td class="text-center text-nowrap">
@@ -318,10 +318,18 @@ final class WorkspaceBlockView {
 
 				$b = new Block($block['blockID']);
 
+				$img = '';
+				$imageFetch = new ImageFetch('Block', $block['blockID'], null, true);
+				if ($imageFetch->imageExists()) {
+					$img = '<img src="' . $imageFetch->getImageSrc(600) . '" class="card-img-top block-list-item-image">';
+				}
+
+				$linkURL = $b->url();
+
 				$blockItems .= '
-					<div class="col-12 col-sm-6 col-lg-3 mt-3">
+					<div class="col-12 col-sm-6 col-lg-3 mt-3' . (!empty($linkURL)?' clickable':'') . '" data-url="' . $linkURL . '">
 						<div class="card">
-							<img src="/image/27/600/" class="card-img-top">
+							' . $img . '
 							<div class="card-body">
 								<h3 class="card-title">' . $b->title() . '</h3>
 								<p class="card-text">' . $b->text() . '</p>
@@ -364,6 +372,33 @@ final class WorkspaceBlockView {
 		$filter .= '</select>';
 
 		return $filter;
+
+	}
+
+	public function adminBlockFormTabs($type = 'create', $blockID = null, $activeTab = 'block-form') {
+
+		$blockFormURL = '#';
+		$updateOnly = true;
+
+		if ($type == 'update' && ctype_digit($blockID)) {
+			$blockFormURL = '/' . Lang::prefix() . 'workspace/admin/blocks/update/' . $blockID . '/';
+			$updateOnly = false;
+		}
+
+		$t = '
+
+			<ul id="admin_block_form_nav_tabs" class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link' . ($activeTab=='block-form'?' active':'') . '" href="' . $blockFormURL . '">' . Lang::getLang('workspaceBlock') . '</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link' . ($updateOnly?' disabled':'') . ($activeTab=='images'?' active':'') . '" href="' . $blockFormURL . 'images/"' . ($updateOnly?' tabindex="-1"':'') . '>' . Lang::getLang('workspaceBlockImage') . '</a>
+				</li>
+			</ul>
+			
+		';
+
+		return $t;
 
 	}
 

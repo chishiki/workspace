@@ -144,6 +144,19 @@ span.room-list-item-room-description {
 
 
 
+/* START BOCKS */
+
+#workspace_block_container .card {
+    min-height:350px;
+}
+
+#workspace_block_container .clickable {
+    cursor:pointer;
+}
+
+/* END BLOCKS */
+
+
 #workspace_admin_room_form_description_english,
 #workspace_admin_room_form_description_japanese,
 #workspace_admin_news_form_content_english,

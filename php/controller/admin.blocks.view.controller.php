@@ -60,7 +60,31 @@ final class WorkspaceAdminBlockViewController {
 
 			// /workspace/admin/blocks/update/<blockID>/
 			if ($loc[3] == 'update' && is_numeric($loc[4])) {
-				return $panko->breadcrumbs() . $view->workspaceBlockForm('update', $loc[4]);
+
+				$blockID = $loc[4];
+
+				if ($loc[5] == 'images') {
+
+					$view = new ImageView($loc, $input, $errors);
+					$block = new Block($blockID);
+					$wbv = new WorkspaceBlockView();
+
+					$arg = new NewImageViewParameters();
+					$arg->cardHeader = $arg->cardHeader . ' [' . $block->title() . ']';
+					$arg->navtabs = $wbv->adminBlockFormTabs('update', $blockID, 'images');
+					$arg->cardContainerDivClasses = array('container');
+					$arg->imageObject = 'Block';
+					$arg->imageObjectID = $blockID;
+					$arg->displayDefaultRadio = true;
+
+					return $view->newImageManager($arg);
+
+				} else {
+
+					return $panko->breadcrumbs() . $view->workspaceBlockForm('update', $loc[4]);
+
+				}
+
 			}
 
 			// /workspace/admin/blocks/confirm-delete/<blockID>/
